@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar Khaled — Portfolio</title>
+  <style>
+    :root{
+      --bg:#07121a;
+      --panel:#0b1a24;
+      --panel2:#0d202b;
+      --text:#f5f7fa;
+      --muted:#b8c3cc;
+      --line:rgba(255,255,255,.18);
+      --accent:#35e0a1;
+      --glow:0 0 24px rgba(53,224,161,.12);
+      --radius:34px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 14% 85%, rgba(236,185,80,.18), transparent 21%),
+        radial-gradient(circle at 87% 5%, rgba(45,104,145,.23), transparent 31%),
+        linear-gradient(135deg,#071118 0%,#091823 52%,#061018 100%);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 8% 90%,rgba(255,220,120,.11),transparent 18%),
+        radial-gradient(circle at 17% 0%,rgba(255,232,184,.08),transparent 18%);
+      filter:blur(20px);
+    }
+
+    .shell{
+      width:min(1500px,calc(100% - 64px));
+      min-height:900px;
+      margin:72px auto;
+      padding:86px 72px 54px;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:30px;
+      background:
+        linear-gradient(115deg,rgba(255,255,255,.028),rgba(255,255,255,.005)),
+        rgba(4,16,23,.72);
+      box-shadow:0 34px 90px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.03);
+      backdrop-filter:blur(8px);
+      position:relative;
+      overflow:hidden;
+    }
+    .shell::after{
+      content:"";
+      position:absolute;
+      width:370px;height:370px;
+      right:-150px;top:200px;
+      background:radial-gradient(circle,rgba(49,94,116,.16),transparent 65%);
+      filter:blur(2px);
+      pointer-events:none;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(420px, .92fr) minmax(500px, 1.1fr);
+      gap:74px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .visual-col{position:relative;min-height:600px;display:flex;align-items:center;justify-content:center}
+    .polaroid{
+      width:min(460px,90%);
+      padding:18px 18px 34px;
+      border-radius:26px;
+      background:#fbfbfb;
+      transform:rotate(-7deg);
+      box-shadow:0 24px 70px rgba(0,0,0,.35);
+      color:#101820;
+      position:relative;
+    }
+    .photo{
+      aspect-ratio:4/4.4;
+      border-radius:17px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,0),rgba(0,0,0,.06)),
+        url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85') center/cover no-repeat;
+    }
+    .caption{
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:22px 18px 0;
+      font-family:"Segoe Print","Bradley Hand",cursive;
+      font-size:28px;line-height:1.22;font-weight:600;
+    }
+    .smile{font-family:ui-sans-serif;font-size:34px;color:#f5b33b;border:2px solid #f5b33b;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-weight:400}
+
+    .doodle{
+      position:absolute;
+      font-family:"Segoe Print","Bradley Hand",cursive;
+      font-style:italic;
+      color:rgba(255,255,255,.86);
+      line-height:1.25;
+      transform:rotate(-8deg);
+      text-shadow:0 1px 0 rgba(255,255,255,.1);
+    }
+    .doodle-left{left:-12px;top:90px;font-size:27px;width:160px}
+    .doodle-left::before{content:"↙";display:block;font-size:58px;font-family:serif;font-style:normal;margin-left:28px;margin-bottom:4px}
+    .doodle-right{right:-25px;top:70px;font-size:27px;width:160px;text-align:center;transform:rotate(8deg)}
+    .doodle-right::after{content:"☀";position:absolute;right:-8px;top:-30px;color:#d3a433;font-family:serif;font-style:normal}
+
+    .content-col{padding-right:42px}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:#d7e0e7;font-size:22px;margin-bottom:12px}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(53,224,161,.45)}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:68px;line-height:.96;margin:0 0 16px;letter-spacing:-1.4px}
+    .role{font-size:30px;color:#b7c6d1;margin-bottom:40px}
+    .bio{max-width:640px;color:#c8d2da;font-size:24px;line-height:1.42;margin-bottom:30px}
+
+    .details{display:grid;gap:10px;margin-bottom:34px}
+    .detail{display:flex;align-items:center;gap:20px;font-size:22px;color:#d8e0e6}
+    .icon-box{width:50px;height:50px;border:1px solid rgba(255,255,255,.18);border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.025)}
+    .icon-box svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+    .socials{display:flex;gap:28px;align-items:center;margin:28px 0 54px 4px}
+    .social{
+      width:54px;height:54px;border-radius:15px;display:grid;place-items:center;color:#fff;text-decoration:none;font-size:28px;font-weight:800;
+      box-shadow:0 0 18px currentColor;
+      transition:.2s ease;
+    }
+    .social:hover{transform:translateY(-4px) scale(1.04)}
+    .fb{background:#1677f2;color:#1686ff}.wa{background:#22c765;color:#33e480}.ig{background:linear-gradient(135deg,#6e35ff,#d82498 52%,#ffad43);color:#ec46b1}.in{background:#087ebc;color:#12a9ed}.web{background:#39454f;color:#77848f}
+    .social span{color:white;text-shadow:none;font-size:25px}
+
+    .actions{display:grid;grid-template-columns:1fr 1.1fr;gap:20px}
+    .btn{
+      min-height:72px;border-radius:40px;padding:0 34px;display:flex;align-items:center;justify-content:center;gap:16px;
+      text-decoration:none;font-weight:800;font-size:21px;letter-spacing:.1px;transition:.2s ease;cursor:pointer;
+    }
+    .btn-primary{background:white;color:#08121a;border:1px solid white;box-shadow:0 12px 30px rgba(255,255,255,.08)}
+    .btn-secondary{color:white;border:1.5px solid rgba(255,255,255,.8);background:transparent}
+    .btn:hover{transform:translateY(-2px)}
+    .btn svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2}
+
+    .footer-note{display:flex;justify-content:space-between;align-items:end;margin-top:20px;padding-top:12px;position:relative;z-index:1}
+    .micro{font-size:11px;line-height:2.1;letter-spacing:5px;color:#aab6bf;text-transform:uppercase}
+    .tiny-doodle{font-family:"Segoe Print",cursive;font-size:20px;line-height:1.15;transform:rotate(8deg);color:rgba(255,255,255,.78);text-align:center}
+
+    .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#fff;color:#07121a;padding:13px 20px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:.25s ease;z-index:20;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media (max-width: 980px){
+      body{background:linear-gradient(180deg,#07141d,#051018)}
+      .shell{width:100%;margin:0;min-height:100vh;border:none;border-radius:0;padding:34px 22px 36px;background:linear-gradient(180deg,rgba(8,24,34,.92),rgba(3,14,21,.97));box-shadow:none}
+      .hero{display:flex;flex-direction:column;gap:20px}
+      .visual-col{min-height:0;width:100%;padding-top:4px}
+      .polaroid{width:58%;max-width:310px;padding:10px 10px 20px;border-radius:18px;transform:rotate(-9deg)}
+      .photo{border-radius:11px}
+      .caption{padding:12px 8px 0;font-size:15px}
+      .smile{width:34px;height:34px;font-size:20px}
+      .doodle-left{display:none}
+      .doodle-right{right:0;top:0;font-size:16px;width:105px;transform:rotate(5deg)}
+      .content-col{padding:0;width:100%}
+      .eyebrow{font-size:16px;margin:6px 0 8px}
+      .dot{width:9px;height:9px}
+      h1{font-size:43px;line-height:1.02;margin-bottom:6px}
+      .role{font-size:18px;margin-bottom:22px}
+      .bio{font-size:17px;line-height:1.4;margin-bottom:18px}
+      .details{gap:7px;margin-bottom:18px}
+      .detail{font-size:14px;gap:13px}
+      .icon-box{width:34px;height:34px;border-radius:9px}
+      .icon-box svg{width:18px;height:18px}
+      .socials{gap:16px;margin:22px 0 24px;justify-content:flex-start}
+      .social{width:42px;height:42px;border-radius:12px;font-size:20px}
+      .social span{font-size:20px}
+      .actions{grid-template-columns:1fr;gap:12px}
+      .btn{min-height:54px;font-size:16px;padding:0 22px}
+      .footer-note{margin-top:22px;justify-content:center}
+      .micro{font-size:9px;line-height:1.7;letter-spacing:3.2px;text-align:center}
+      .tiny-doodle{display:none}
+    }
+
+    @media (max-width:520px){
+      .shell{padding-left:18px;padding-right:18px}
+      .polaroid{width:63%;}
+      h1{font-size:40px}
+      .socials{justify-content:space-between;gap:8px}
+      .social{width:40px;height:40px}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="visual-col">
+        <div class="doodle doodle-left">Better<br>Things<br>Ahead</div>
+        <div class="polaroid">
+          <div class="photo" role="img" aria-label="Placeholder profile photo"></div>
+          <div class="caption"><span>Just a student<br>with big dreams</span><span class="smile">⌣</span></div>
+        </div>
+        <div class="doodle doodle-right">Good<br>People<br>Brighter<br>Days</div>
+      </div>
+
+      <div class="content-col">
+        <div class="eyebrow"><span class="dot"></span><span>Hello, I'm</span></div>
+        <h1>Omar Khaled</h1>
+        <div class="role">Recent Graduate</div>
+        <p class="bio">Passionate about learning, meeting new people, and creating a better tomorrow.</p>
+
+        <div class="details">
+          <div class="detail">
+            <span class="icon-box"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span>Cairo, Egypt</span>
+          </div>
+          <div class="detail">
+            <span class="icon-box"><svg viewBox="0 0 24 24"><path d="m3 10 9-5 9 5-9 5-9-5Z"/><path d="M7 12.5V17c2.7 2 7.3 2 10 0v-4.5"/></svg></span>
+            <span>Bachelor's in Computer Science</span>
+          </div>
+          <div class="detail">
+            <span class="icon-box"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16"/></svg></span>
+            <span>Class of 2024</span>
+          </div>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a class="social fb" href="#" aria-label="Facebook"><span>f</span></a>
+          <a class="social wa" href="#" aria-label="WhatsApp"><span>◔</span></a>
+          <a class="social ig" href="#" aria-label="Instagram"><span>◎</span></a>
+          <a class="social in" href="#" aria-label="LinkedIn"><span>in</span></a>
+          <a class="social web" href="#" aria-label="Website"><span>↪</span></a>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" id="connectBtn" href="#contact">Let's Connect <span>→</span></a>
+          <a class="btn btn-secondary" id="cvBtn" href="#">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 17v3h14v-3"/></svg>
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      <div class="micro">Curiosity<br>Creates<br>Opportunities</div>
+      <div class="tiny-doodle">Same<br>Student<br>Brighter<br>Tomorrow</div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">Demo action</div>
+  <script>
+    const toast = document.getElementById('toast');
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=>toast.classList.remove('show'), 1700);
+    }
+    document.getElementById('connectBtn').addEventListener('click', e=>{
+      e.preventDefault(); showToast('Contact link is a placeholder');
+    });
+    document.getElementById('cvBtn').addEventListener('click', e=>{
+      e.preventDefault(); showToast('CV download is a placeholder');
+    });
+    document.querySelectorAll('.social').forEach(a=>a.addEventListener('click',e=>{
+      e.preventDefault(); showToast(`${a.getAttribute('aria-label')} link is a placeholder`);
+    }));
+  </script>
+</body>
+</html>
